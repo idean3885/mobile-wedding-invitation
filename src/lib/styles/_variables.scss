@@ -1,0 +1,27 @@
+// Design Tokens - 디자이너 작업 시 이 파일의 값을 교체
+// Colors
+$color-primary: #b08968;
+$color-text: #333333;
+$color-text-light: #666666;
+$color-background: #fefefe;
+$color-divider: #e0e0e0;
+
+// Typography
+$font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-xxl: 32px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Layout
+$max-width-mobile: 430px;
+$min-touch-target: 44px;

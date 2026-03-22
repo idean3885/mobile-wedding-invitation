@@ -1,0 +1,48 @@
+@use 'variables' as *;
+
+// Reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size-base;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: $color-background;
+  line-height: 1.6;
+  max-width: $max-width-mobile;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  min-width: $min-touch-target;
+  min-height: $min-touch-target;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  min-width: $min-touch-target;
+  min-height: $min-touch-target;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
