@@ -23,7 +23,7 @@ Sync Impact Report
 ### II. Speed-First
 
 초기 로딩(FCP) 1.5초 이내를 MUST 달성한다.
-이미지는 WebP/AVIF 포맷 + lazy loading을 MUST 적용한다.
+이미지는 WebP/AVIF 포맷 + lazy loading을 MUST 적용한다. 단, 크롤러용 메타 이미지(OG image 등)는 JPG/PNG를 허용한다.
 외부 스크립트(analytics 등) 추가 시 성능 영향을 측정하고 정당화해야 한다.
 JavaScript 번들은 50KB(gzip) 이하를 목표로 한다.
 
@@ -55,7 +55,7 @@ YAGNI 원칙을 엄격히 적용한다.
 | Styling | SCSS (컴포넌트 스코프) | 디자이너 협업 용이 |
 | Build | Vite (SvelteKit 내장) | SCSS/이미지 최적화 내장 |
 | Deploy | AppPaaS (정적 빌드 결과물) | 웹 애플리케이션 배포 |
-| OG Tags | svelte:head | 링크 공유 시 썸네일 표시 |
+| OG Tags | app.html (정적 삽입) | 크롤러 JS 미실행 대응, 링크 공유 시 썸네일 표시 |
 
 ## Development Workflow
 
@@ -70,4 +70,4 @@ YAGNI 원칙을 엄격히 적용한다.
 - 원칙 변경 시 이 문서를 먼저 수정하고, 관련 spec/plan/tasks에 전파한다.
 - 버전은 시맨틱 버저닝을 따른다 (MAJOR: 원칙 제거/재정의, MINOR: 원칙 추가, PATCH: 문구 수정).
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-22 | **Last Amended**: 2026-03-22
+**Version**: 1.0.1 | **Ratified**: 2026-03-22 | **Last Amended**: 2026-03-22
