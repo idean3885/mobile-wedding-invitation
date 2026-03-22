@@ -1,2 +1,13 @@
-<h1>모바일 청첩장</h1>
-<p>Setup 완료 — 섹션 컴포넌트 추가 예정</p>
+<script lang="ts">
+  import Hero from '$lib/components/Hero.svelte';
+  import Gallery from '$lib/components/Gallery.svelte';
+  import Venue from '$lib/components/Venue.svelte';
+  import Account from '$lib/components/Account.svelte';
+</script>
+
+<main>
+  <Hero />
+  <Gallery />
+  <Venue />
+  <Account />
+</main>
