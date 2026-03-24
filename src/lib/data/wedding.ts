@@ -31,6 +31,7 @@ export interface Venue {
   lat: number;
   lng: number;
   directions: DirectionGroup[];
+  parking: string;
 }
 
 export interface AccountEntry {
@@ -41,18 +42,17 @@ export interface AccountEntry {
   number: string;
 }
 
-// 플레이스홀더 데이터 - 실제 콘텐츠로 교체 필요
 export const wedding: Wedding = {
   groomName: '동영',
   brideName: '지혜',
   groomParents: { father: '김병길', mother: '배진우' },
   brideParents: { father: '이창열', mother: '서승순' },
   groomRank: '장남',
-  brideRank: '장녀',
+  brideRank: '차녀',
   date: '2026년 6월 6일 토요일 오후 3시',
   heroImage: '/images/hero.webp',
   greeting:
-    '서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지켜나갈 수 있도록\n축복해 주시면 감사하겠습니다.'
+    '사랑이 무엇인지 물어본다면,\n서로의 이름을 대답하기로 했습니다.\n\n낯선 이끌림이 익숙한 편안함이 된 오늘,\n이제는 든든한 \'우리\'로 시작하려 합니다.\n\n동영과 지혜의 시작에 함께해 주세요.\n축복의 자리에 귀한 걸음 부탁드립니다.'
 };
 
 export const gallery: GalleryPhoto[] = [
@@ -79,10 +79,11 @@ export const venue: Venue = {
   lat: 37.4847,
   lng: 127.0145,
   directions: [
-    { type: 'subway', description: '3호선 남부터미널역 4번 출구 도보 2분' },
-    { type: 'bus', description: '남부터미널 정류장 하차 (144, 350, 461, 541, 641)' },
-    { type: 'car', description: '네비게이션 "더화이트베일" 검색 (주차 600대, 2시간 무료)' }
-  ]
+    { type: 'subway', description: '3호선 남부터미널역 4-1번 출구 바로 앞 / 4번출구 도보 2분' },
+    { type: 'bus', description: '\'남부터미널\' 정류장 하차 (간선, 지선, 직행버스 다수)' },
+    { type: 'car', description: '경부 고속도로 서초 I.C (서초·서당방면) 500m 거리내' }
+  ],
+  parking: '맞은편 전용 주차타워 이용 (2시간 무료)'
 };
 
 export const accounts: AccountEntry[] = [
