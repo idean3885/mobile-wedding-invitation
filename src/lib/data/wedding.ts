@@ -46,8 +46,8 @@ export const wedding: Wedding = {
   brideParents: { father: '아버지성함', mother: '어머니성함' },
   groomRank: '장남',
   brideRank: '장녀',
-  date: '2026년 O월 O일 토요일 오후 O시',
-  heroImage: '/images/hero-placeholder.jpg',
+  date: '2026년 6월 6일 토요일 오후 3시',
+  heroImage: '/images/hero.jpg',
   greeting:
     '서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지켜나갈 수 있도록\n축복해 주시면 감사하겠습니다.'
 };
@@ -55,18 +55,28 @@ export const wedding: Wedding = {
 export const gallery: GalleryPhoto[] = [
   { src: '/images/gallery-01.jpg', alt: '웨딩 사진 1', order: 1 },
   { src: '/images/gallery-02.jpg', alt: '웨딩 사진 2', order: 2 },
-  { src: '/images/gallery-03.jpg', alt: '웨딩 사진 3', order: 3 }
+  { src: '/images/gallery-03.jpg', alt: '웨딩 사진 3', order: 3 },
+  { src: '/images/gallery-04.jpg', alt: '웨딩 사진 4', order: 4 },
+  { src: '/images/gallery-05.jpg', alt: '웨딩 사진 5', order: 5 },
+  { src: '/images/gallery-06.jpg', alt: '웨딩 사진 6', order: 6 },
+  { src: '/images/gallery-07.jpg', alt: '웨딩 사진 7', order: 7 },
+  { src: '/images/gallery-08.jpg', alt: '웨딩 사진 8', order: 8 },
+  { src: '/images/gallery-09.jpg', alt: '웨딩 사진 9', order: 9 },
+  { src: '/images/gallery-10.jpg', alt: '웨딩 사진 10', order: 10 },
+  { src: '/images/gallery-11.jpg', alt: '웨딩 사진 11', order: 11 },
+  { src: '/images/gallery-12.jpg', alt: '웨딩 사진 12', order: 12 },
+  { src: '/images/gallery-13.jpg', alt: '웨딩 사진 13', order: 13 }
 ];
 
 export const venue: Venue = {
-  name: '예식장 이름',
-  address: '서울특별시 OO구 OO로 000',
-  mapImage: '/images/map.webp',
-  mapLink: 'https://map.kakao.com/',
+  name: '남부터미널 더화이트베일 3층 V홀',
+  address: '서울특별시 서초구 남부순환로 2036',
+  mapImage: '',
+  mapLink: 'https://map.naver.com/p/search/더화이트베일',
   directions: [
-    { type: 'subway', description: 'O호선 OO역 O번 출구 도보 O분' },
-    { type: 'bus', description: 'OOO, OOO번 OO 정류장 하차' },
-    { type: 'car', description: '네비게이션 "예식장 이름" 검색' }
+    { type: 'subway', description: '3호선 남부터미널역 5번 출구 도보 3분' },
+    { type: 'bus', description: '남부터미널 정류장 하차 (서초07, 서초09, 405, 462, 641)' },
+    { type: 'car', description: '네비게이션 "더화이트베일" 검색 (주차 가능)' }
   ]
 };
 
