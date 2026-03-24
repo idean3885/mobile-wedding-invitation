@@ -17,7 +17,9 @@
 **Project Type**: static-web-app
 **Performance Goals**: FCP 1.5초 이내 (4G), JS 번들 50KB(gzip) 이하
 **Constraints**: 서버 라운드트립 없음, 정적 파일만, 이미지 WebP/AVIF + lazy loading
-**Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 10~20장
+**Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 13장 (실제 웨딩 사진)
+**Venue**: 남부터미널 더화이트베일 3층 V홀 | 2026-06-06(토) 15:00
+**Hero Image**: IMG_4689.JPG | **Gallery**: IMG_4677~4690 중 대문 제외 13장
 
 ## Constitution Check
 
