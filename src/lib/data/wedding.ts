@@ -75,8 +75,8 @@ export const venue: Venue = {
   mapLink: 'https://map.naver.com/p/search/더화이트베일',
   directions: [
     { type: 'subway', description: '3호선 남부터미널역 5번 출구 도보 3분' },
-    { type: 'bus', description: 'OOO, OOO번 OO 정류장 하차' },
-    { type: 'car', description: '네비게이션 "더화이트베일" 검색' }
+    { type: 'bus', description: '남부터미널 정류장 하차 (서초07, 서초09, 405, 462, 641)' },
+    { type: 'car', description: '네비게이션 "더화이트베일" 검색 (주차 가능)' }
   ]
 };
 
