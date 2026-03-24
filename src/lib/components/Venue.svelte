@@ -98,6 +98,13 @@
     {/each}
   </ul>
 
+  {#if venue.parking}
+    <div class="parking">
+      <span class="direction-type">주차</span>
+      <span class="direction-desc">{venue.parking}</span>
+    </div>
+  {/if}
+
   {#if toastVisible}
     <div class="toast" role="status" aria-live="polite">복사됨</div>
   {/if}
