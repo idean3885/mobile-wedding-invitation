@@ -3,18 +3,19 @@ import { readdirSync, mkdirSync, existsSync } from 'fs';
 import { join, parse } from 'path';
 
 const STATIC_IMAGES = 'static/images';
-const QUALITY = 85;
+const QUALITY = 95;
+const THUMB_QUALITY = 85;
 
 const configs = {
-  hero: { width: 1200, suffix: '' },
-  gallery: { width: 800, suffix: '' },
-  thumb: { width: 400, suffix: '-thumb' }
+  hero: { width: 3000 },
+  gallery: { width: 2000 },
+  thumb: { width: 600 }
 };
 
-async function optimizeImage(inputPath, outputPath, width) {
+async function optimizeImage(inputPath, outputPath, width, quality = QUALITY) {
   await sharp(inputPath)
     .resize(width, null, { withoutEnlargement: true })
-    .webp({ quality: QUALITY })
+    .webp({ quality })
     .toFile(outputPath);
 }
 
@@ -34,7 +35,7 @@ async function main() {
     // Thumbnail for gallery images only
     if (!isHero && !name.includes('placeholder') && !name.includes('qr')) {
       const thumbOutput = join(STATIC_IMAGES, `${name}-thumb.webp`);
-      await optimizeImage(inputPath, thumbOutput, configs.thumb.width);
+      await optimizeImage(inputPath, thumbOutput, configs.thumb.width, THUMB_QUALITY);
     }
 
     const inputStats = (await sharp(inputPath).metadata());
