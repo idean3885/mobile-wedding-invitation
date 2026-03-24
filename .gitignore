@@ -5,4 +5,5 @@ build/
 .env
 .env.*
 !.env.example
-*.JPG
+# Original source photos (root level only)
+/IMG_*.JPG
