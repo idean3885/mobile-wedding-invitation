@@ -5,6 +5,10 @@
   import Account from '$lib/components/Account.svelte';
 </script>
 
+<svelte:head>
+  <title>동영 ♥ 지혜 결혼합니다</title>
+</svelte:head>
+
 <main>
   <Hero />
   <Gallery />
