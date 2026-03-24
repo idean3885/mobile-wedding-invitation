@@ -42,13 +42,14 @@
 
   onMount(() => {
     const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
+    console.log('[Map] VITE_KAKAO_MAP_KEY present:', !!kakaoKey, kakaoKey ? `(${kakaoKey.substring(0, 4)}...)` : '');
     if (!kakaoKey) {
-      console.warn('VITE_KAKAO_MAP_KEY not set, map will not load');
       return;
     }
 
     const script = document.createElement('script');
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
+    script.onerror = () => console.log('[Map] SDK load failed');
     script.onload = () => {
       window.kakao.maps.load(() => {
         const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
@@ -62,8 +63,8 @@
           map
         });
 
-        // Disable zoom on scroll for mobile usability
         map.setZoomable(false);
+        console.log('[Map] Kakao map loaded');
       });
     };
     document.head.appendChild(script);
