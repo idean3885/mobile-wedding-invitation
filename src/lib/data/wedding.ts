@@ -44,8 +44,8 @@ export interface AccountEntry {
 export const wedding: Wedding = {
   groomName: '동영',
   brideName: '지혜',
-  groomParents: { father: '아버지성함', mother: '어머니성함' },
-  brideParents: { father: '아버지성함', mother: '어머니성함' },
+  groomParents: { father: '김병길', mother: '배진우' },
+  brideParents: { father: '이창열', mother: '서승순' },
   groomRank: '장남',
   brideRank: '장녀',
   date: '2026년 6월 6일 토요일 오후 3시',
@@ -85,10 +85,10 @@ export const venue: Venue = {
 };
 
 export const accounts: AccountEntry[] = [
-  { side: 'groom', relation: 'self', bank: 'OO은행', holder: '동영', number: '000-0000-0000' },
-  { side: 'groom', relation: 'father', bank: 'OO은행', holder: '아버지성함', number: '000-0000-0000' },
-  { side: 'groom', relation: 'mother', bank: 'OO은행', holder: '어머니성함', number: '000-0000-0000' },
-  { side: 'bride', relation: 'self', bank: 'OO은행', holder: '지혜', number: '000-0000-0000' },
-  { side: 'bride', relation: 'father', bank: 'OO은행', holder: '아버지성함', number: '000-0000-0000' },
-  { side: 'bride', relation: 'mother', bank: 'OO은행', holder: '어머니성함', number: '000-0000-0000' }
+  { side: 'groom', relation: 'self', bank: '국민은행', holder: '김동영', number: '444402-01-331651' },
+  { side: 'groom', relation: 'father', bank: 'OO은행', holder: '김병길', number: '000-0000-0000' },
+  { side: 'groom', relation: 'mother', bank: 'OO은행', holder: '배진우', number: '000-0000-0000' },
+  { side: 'bride', relation: 'self', bank: 'OO은행', holder: '이지혜', number: '000-0000-0000' },
+  { side: 'bride', relation: 'father', bank: 'OO은행', holder: '이창열', number: '000-0000-0000' },
+  { side: 'bride', relation: 'mother', bank: 'OO은행', holder: '서승순', number: '000-0000-0000' }
 ];
