@@ -13,6 +13,7 @@ export interface Wedding {
 
 export interface GalleryPhoto {
   src: string;
+  thumb: string;
   alt: string;
   order: number;
 }
@@ -49,25 +50,25 @@ export const wedding: Wedding = {
   groomRank: '장남',
   brideRank: '장녀',
   date: '2026년 6월 6일 토요일 오후 3시',
-  heroImage: '/images/hero.jpg',
+  heroImage: '/images/hero.webp',
   greeting:
     '서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지켜나갈 수 있도록\n축복해 주시면 감사하겠습니다.'
 };
 
 export const gallery: GalleryPhoto[] = [
-  { src: '/images/gallery-01.jpg', alt: '웨딩 사진 1', order: 1 },
-  { src: '/images/gallery-02.jpg', alt: '웨딩 사진 2', order: 2 },
-  { src: '/images/gallery-03.jpg', alt: '웨딩 사진 3', order: 3 },
-  { src: '/images/gallery-04.jpg', alt: '웨딩 사진 4', order: 4 },
-  { src: '/images/gallery-05.jpg', alt: '웨딩 사진 5', order: 5 },
-  { src: '/images/gallery-06.jpg', alt: '웨딩 사진 6', order: 6 },
-  { src: '/images/gallery-07.jpg', alt: '웨딩 사진 7', order: 7 },
-  { src: '/images/gallery-08.jpg', alt: '웨딩 사진 8', order: 8 },
-  { src: '/images/gallery-09.jpg', alt: '웨딩 사진 9', order: 9 },
-  { src: '/images/gallery-10.jpg', alt: '웨딩 사진 10', order: 10 },
-  { src: '/images/gallery-11.jpg', alt: '웨딩 사진 11', order: 11 },
-  { src: '/images/gallery-12.jpg', alt: '웨딩 사진 12', order: 12 },
-  { src: '/images/gallery-13.jpg', alt: '웨딩 사진 13', order: 13 }
+  { src: '/images/gallery-01.webp', thumb: '/images/gallery-01-thumb.webp', alt: '웨딩 사진 1', order: 1 },
+  { src: '/images/gallery-02.webp', thumb: '/images/gallery-02-thumb.webp', alt: '웨딩 사진 2', order: 2 },
+  { src: '/images/gallery-03.webp', thumb: '/images/gallery-03-thumb.webp', alt: '웨딩 사진 3', order: 3 },
+  { src: '/images/gallery-04.webp', thumb: '/images/gallery-04-thumb.webp', alt: '웨딩 사진 4', order: 4 },
+  { src: '/images/gallery-05.webp', thumb: '/images/gallery-05-thumb.webp', alt: '웨딩 사진 5', order: 5 },
+  { src: '/images/gallery-06.webp', thumb: '/images/gallery-06-thumb.webp', alt: '웨딩 사진 6', order: 6 },
+  { src: '/images/gallery-07.webp', thumb: '/images/gallery-07-thumb.webp', alt: '웨딩 사진 7', order: 7 },
+  { src: '/images/gallery-08.webp', thumb: '/images/gallery-08-thumb.webp', alt: '웨딩 사진 8', order: 8 },
+  { src: '/images/gallery-09.webp', thumb: '/images/gallery-09-thumb.webp', alt: '웨딩 사진 9', order: 9 },
+  { src: '/images/gallery-10.webp', thumb: '/images/gallery-10-thumb.webp', alt: '웨딩 사진 10', order: 10 },
+  { src: '/images/gallery-11.webp', thumb: '/images/gallery-11-thumb.webp', alt: '웨딩 사진 11', order: 11 },
+  { src: '/images/gallery-12.webp', thumb: '/images/gallery-12-thumb.webp', alt: '웨딩 사진 12', order: 12 },
+  { src: '/images/gallery-13.webp', thumb: '/images/gallery-13-thumb.webp', alt: '웨딩 사진 13', order: 13 }
 ];
 
 export const venue: Venue = {

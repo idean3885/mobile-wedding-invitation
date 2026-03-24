@@ -49,7 +49,7 @@
           aria-label="{photo.alt} 크게 보기"
         >
           <img
-            src={photo.src}
+            src={photo.thumb}
             alt={photo.alt}
             loading="lazy"
             width="300"

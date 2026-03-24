@@ -86,15 +86,6 @@
 
   <div class="map-container">
     <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도"></div>
-    <a
-      class="map-external-link"
-      href={venue.mapLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="네이버 지도에서 보기"
-    >
-      네이버 지도에서 보기 →
-    </a>
   </div>
 
   <ul class="directions">
@@ -173,17 +164,6 @@
     height: 250px;
     border: 1px solid $color-divider;
     margin-bottom: $spacing-sm;
-  }
-
-  .map-external-link {
-    display: block;
-    text-align: center;
-    font-size: $font-size-sm;
-    color: $color-primary;
-    text-decoration: none;
-    padding: $spacing-sm;
-    min-height: 44px;
-    line-height: 44px;
   }
 
   .directions {
