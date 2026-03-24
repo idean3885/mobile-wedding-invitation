@@ -80,35 +80,51 @@
     renderGroup(groomAccounts, 'groom'),
     renderGroup(brideAccounts, 'bride')
   ];
+
+  let openSide: string | null = null;
+
+  function toggle(side: string) {
+    openSide = openSide === side ? null : side;
+  }
 </script>
 
 <section class="account">
   <h2 class="account__title">마음 전하실 곳</h2>
 
   <div class="account__groups">
-    {#each groups as group}
+    {#each groups as group, i}
       <div class="account__group">
-        <h3 class="account__side-label">{group.label}</h3>
-        <ul class="account__list">
-          {#each group.entries as entry}
-            <li class="account__item">
-              <span class="account__relation">{RELATION_LABEL[entry.relation]}</span>
-              <span class="account__bank">{entry.bank}</span>
-              <span class="account__holder">{entry.holder}</span>
-              <span class="account__number" data-account-number={entry.number}>
-                {entry.number}
-              </span>
-              <button
-                class="account__copy-btn"
-                type="button"
-                aria-label="{entry.holder} 계좌번호 복사"
-                on:click={() => copyToClipboard(entry.number)}
-              >
-                {copiedNumber === entry.number ? '복사됨' : '복사'}
-              </button>
-            </li>
-          {/each}
-        </ul>
+        <button
+          class="account__toggle"
+          type="button"
+          on:click={() => toggle(i === 0 ? 'groom' : 'bride')}
+          aria-expanded={openSide === (i === 0 ? 'groom' : 'bride')}
+        >
+          <span class="account__side-label">{group.label}</span>
+          <span class="account__arrow" class:account__arrow--open={openSide === (i === 0 ? 'groom' : 'bride')}>▾</span>
+        </button>
+        {#if openSide === (i === 0 ? 'groom' : 'bride')}
+          <ul class="account__list">
+            {#each group.entries as entry}
+              <li class="account__item">
+                <span class="account__relation">{RELATION_LABEL[entry.relation]}</span>
+                <span class="account__bank">{entry.bank}</span>
+                <span class="account__holder">{entry.holder}</span>
+                <span class="account__number" data-account-number={entry.number}>
+                  {entry.number}
+                </span>
+                <button
+                  class="account__copy-btn"
+                  type="button"
+                  aria-label="{entry.holder} 계좌번호 복사"
+                  on:click={() => copyToClipboard(entry.number)}
+                >
+                  {copiedNumber === entry.number ? '복사됨' : '복사'}
+                </button>
+              </li>
+            {/each}
+          </ul>
+        {/if}
       </div>
     {/each}
   </div>
@@ -134,10 +150,37 @@
     gap: $spacing-lg;
   }
 
+  .account__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background: none;
+    border: 1px solid $color-divider;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: $min-touch-target;
+
+    &:active {
+      background-color: $color-divider;
+    }
+  }
+
   .account__side-label {
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
     color: $color-primary;
-    margin-bottom: $spacing-sm;
+    font-weight: 600;
+  }
+
+  .account__arrow {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    transition: transform 0.2s;
+
+    &--open {
+      transform: rotate(180deg);
+    }
   }
 
   .account__list {
