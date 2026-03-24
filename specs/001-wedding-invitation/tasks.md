@@ -49,8 +49,8 @@
 
 ### Pre-requisite: 실제 이미지 배치
 
-- [ ] T033 [P] 실제 웨딩 사진 14장을 `static/images/`로 이동: IMG_4689.JPG → hero.jpg (대문), IMG_4677~4690(대문 제외 13장) → gallery-01~13.jpg. `wedding.ts` 데이터 업데이트
-- [ ] T034 [P] `wedding.ts` 예식 정보 실제 데이터로 업데이트: 예식일(2026년 6월 6일 토요일 오후 3시), 예식장(남부터미널 더화이트베일 3층 V홀)
+- [x] T033 [P] 실제 웨딩 사진 14장을 `static/images/`로 이동: IMG_4689.JPG → hero.jpg (대문), IMG_4677~4690(대문 제외 13장) → gallery-01~13.jpg. `wedding.ts` 데이터 업데이트
+- [x] T034 [P] `wedding.ts` 예식 정보 실제 데이터로 업데이트: 예식일(2026년 6월 6일 토요일 오후 3시), 예식장(남부터미널 더화이트베일 3층 V홀)
 
 ### Implementation for User Story 1
 
@@ -71,7 +71,7 @@
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] `src/app.html`의 OG 메타 태그를 실제 콘텐츠로 업데이트: og:title ("동영 ♥ 지혜 결혼합니다"), og:description ("2026년 6월 6일 토요일 오후 3시 | 남부터미널 더화이트베일 3층 V홀"), og:image, og:url
+- [x] T013 [US2] `src/app.html`의 OG 메타 태그를 실제 콘텐츠로 업데이트: og:title ("동영 ♥ 지혜 결혼합니다"), og:description ("2026년 6월 6일 토요일 오후 3시 | 남부터미널 더화이트베일 3층 V홀"), og:image, og:url
 - [ ] T014 [US2] `static/og-image.jpg` 준비: 대표 사진을 1200x630px 크기로 최적화 (JPG, 카카오톡 호환) — 디자이너 제공 후 교체
 - [ ] T015 [US2] 카카오톡 OG 캐시 디버거로 메타 태그 파싱 결과 검증 — 디자이너 후
 
@@ -87,10 +87,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Gallery 컴포넌트 구현: `src/lib/components/Gallery.svelte` — `wedding.ts`의 photos 데이터(13장) 를 순서대로 표시. 각 이미지에 대체 텍스트 적용, lazy loading 설정
-- [ ] T017 [US3] Gallery 확대 뷰 구현: `src/lib/components/Gallery.svelte` 내부에 `<dialog>` 기반 전체 화면 오버레이, 사진 간 이동 기능, 닫기 기능
+- [x] T016 [US3] Gallery 컴포넌트 구현: `src/lib/components/Gallery.svelte` — `wedding.ts`의 photos 데이터(13장) 를 순서대로 표시. 각 이미지에 대체 텍스트 적용, lazy loading 설정
+- [x] T017 [US3] Gallery 확대 뷰 구현: `src/lib/components/Gallery.svelte` 내부에 `<dialog>` 기반 전체 화면 오버레이, 사진 간 이동 기능, 닫기 기능
 - [ ] T018 [US3] Gallery 컴포넌트 스코프 SCSS 작성: 모바일 퍼스트 사진 목록 레이아웃, 확대 뷰 오버레이 스타일, 터치 타겟 준수
-- [ ] T019 [US3] 갤러리 이미지 최적화: `vite-imagetools` 또는 `@sveltejs/enhanced-img`로 WebP 변환 + 반응형 srcset 빌드 파이프라인 설정
+- [ ] T019 [US3] 이미지 최적화: sharp로 원본 리사이즈(hero 1200px, gallery 800px, thumb 400px) + WebP 변환 + 품질 85%. 원본 85MB → 목표 5MB 이하
 
 **Checkpoint**: 갤러리에서 사진 목록 표시 → 탭 시 확대 → 이동 → 닫기 전체 흐름 동작
 
@@ -104,8 +104,8 @@
 
 ### Implementation for User Story 4
 
-- [ ] T020 [US4] 지도 임베딩: 카카오 지도 SDK 임베딩 + 네이버 지도 외부 링크 연결 — 더화이트베일 서초중앙로 14
-- [ ] T021 [US4] Venue 컴포넌트 구현: `src/lib/components/Venue.svelte` — 남부터미널 더화이트베일 3층 V홀, 주소, 지도 이미지(탭 시 외부 지도 앱 연결), 교통 안내(지하철/버스/자가용) 표시. 이미지에 대체 텍스트 적용
+- [x] T020 [US4] 지도 임베딩: 카카오 지도 SDK 임베딩 + 네이버 지도 외부 링크 연결 — 더화이트베일 서초중앙로 14
+- [x] T021 [US4] Venue 컴포넌트 구현: `src/lib/components/Venue.svelte` — 남부터미널 더화이트베일 3층 V홀, 주소, 지도 이미지(탭 시 외부 지도 앱 연결), 교통 안내(지하철/버스/자가용) 표시. 이미지에 대체 텍스트 적용
 - [ ] T022 [US4] Venue 컴포넌트 스코프 SCSS 작성: 지도 이미지 영역, 주소 텍스트, 교통 수단별 안내 레이아웃, 터치 타겟 준수 — 디자이너 후
 - [ ] T023 [US4] 지도 앱 미설치 시 웹 지도 페이지 폴백: 지도 링크를 범용 URL 스킴으로 설정하여 앱 미설치 시 웹 브라우저로 열리도록 처리
 
@@ -121,8 +121,8 @@
 
 ### Implementation for User Story 5
 
-- [ ] T024 [US5] Account 컴포넌트 구현: `src/lib/components/Account.svelte` — 신랑측/신부측 구분, 각 측별 본인·아버지·어머니 계좌 정보(은행명, 예금주, 계좌번호) 표시. `wedding.ts` 데이터 바인딩
-- [ ] T025 [US5] 클립보드 복사 기능 구현: `src/lib/components/Account.svelte` 내부에 Clipboard API + execCommand 폴백 + 텍스트 선택 폴백. 복사 완료 피드백 표시 (0.5초 이내)
+- [x] T024 [US5] Account 컴포넌트 구현: `src/lib/components/Account.svelte` — 신랑측/신부측 구분, 각 측별 본인·아버지·어머니 계좌 정보(은행명, 예금주, 계좌번호) 표시. `wedding.ts` 데이터 바인딩
+- [x] T025 [US5] 클립보드 복사 기능 구현: `src/lib/components/Account.svelte` 내부에 Clipboard API + execCommand 폴백 + 텍스트 선택 폴백. 복사 완료 피드백 표시 (0.5초 이내)
 - [ ] T026 [US5] Account 컴포넌트 스코프 SCSS 작성: 측별 구분 레이아웃, 계좌 정보 카드, 복사 영역, 터치 타겟 준수
 
 **Checkpoint**: 계좌 정보 표시 → 복사 요청 → 클립보드 복사 + 피드백 확인
