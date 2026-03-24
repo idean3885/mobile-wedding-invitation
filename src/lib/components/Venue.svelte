@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { venue } from '$lib/data/wedding';
 
   const typeLabel: Record<string, string> = {
@@ -36,6 +37,37 @@
       toastVisible = false;
     }, 2000);
   }
+
+  let mapContainer: HTMLElement;
+
+  onMount(() => {
+    const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
+    if (!kakaoKey) {
+      console.warn('VITE_KAKAO_MAP_KEY not set, map will not load');
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
+        const map = new window.kakao.maps.Map(mapContainer, {
+          center: position,
+          level: 3
+        });
+
+        new window.kakao.maps.Marker({
+          position,
+          map
+        });
+
+        // Disable zoom on scroll for mobile usability
+        map.setZoomable(false);
+      });
+    };
+    document.head.appendChild(script);
+  });
 </script>
 
 <section class="venue">
@@ -52,33 +84,18 @@
     </div>
   </div>
 
-  {#if venue.mapImage}
+  <div class="map-container">
+    <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도"></div>
     <a
-      class="map-link"
+      class="map-external-link"
       href={venue.mapLink}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="{venue.name} 지도 보기 (외부 지도 앱으로 이동)"
+      aria-label="네이버 지도에서 보기"
     >
-      <img
-        class="map-image"
-        src={venue.mapImage}
-        alt="{venue.name} 위치 지도"
-        width="430"
-        height="300"
-      />
+      네이버 지도에서 보기 →
     </a>
-  {:else}
-    <a
-      class="map-link"
-      href={venue.mapLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="{venue.name} 지도 보기 (외부 지도 앱으로 이동)"
-    >
-      <div class="map-placeholder">지도 보기</div>
-    </a>
-  {/if}
+  </div>
 
   <ul class="directions">
     {#each venue.directions as dir}
@@ -147,28 +164,26 @@
     white-space: nowrap;
   }
 
-  .map-link {
-    display: block;
+  .map-container {
     margin-bottom: $spacing-lg;
   }
 
-  .map-image {
+  .map-embed {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 250px;
     border: 1px solid $color-divider;
+    margin-bottom: $spacing-sm;
   }
 
-  .map-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    background: $color-background;
-    border: 1px solid $color-divider;
+  .map-external-link {
+    display: block;
+    text-align: center;
+    font-size: $font-size-sm;
     color: $color-primary;
-    font-size: $font-size-base;
+    text-decoration: none;
+    padding: $spacing-sm;
+    min-height: 44px;
+    line-height: 44px;
   }
 
   .directions {

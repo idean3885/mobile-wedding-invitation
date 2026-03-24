@@ -25,8 +25,10 @@ export interface DirectionGroup {
 export interface Venue {
   name: string;
   address: string;
-  mapImage: string;
+  mapImage: string;  // keep for backward compat, can be empty
   mapLink: string;
+  lat: number;
+  lng: number;
   directions: DirectionGroup[];
 }
 
@@ -72,7 +74,9 @@ export const venue: Venue = {
   name: '더화이트베일 3층 V홀',
   address: '서울특별시 서초구 서초중앙로 14',
   mapImage: '',
-  mapLink: 'https://map.naver.com/p/entry/place/12023277',
+  mapLink: 'https://map.naver.com/p/entry/place/12023277?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202603250027&locale=ko&svcName=map_pcv5',
+  lat: 37.4847,
+  lng: 127.0145,
   directions: [
     { type: 'subway', description: '3호선 남부터미널역 4번 출구 도보 2분' },
     { type: 'bus', description: '남부터미널 정류장 하차 (144, 350, 461, 541, 641)' },
