@@ -4,12 +4,12 @@ import { join, parse } from 'path';
 
 const STATIC_IMAGES = 'static/images';
 const QUALITY = 95;
-const THUMB_QUALITY = 85;
+const THUMB_QUALITY = 90;
 
 const configs = {
   hero: { width: 3000 },
   gallery: { width: 2000 },
-  thumb: { width: 600 }
+  thumb: { width: 1000 }
 };
 
 async function optimizeImage(inputPath, outputPath, width, quality = QUALITY) {
