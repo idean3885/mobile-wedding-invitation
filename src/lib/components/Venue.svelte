@@ -40,21 +40,43 @@
 
   let mapContainer: HTMLElement;
 
+  let mapError = '';
+
   onMount(() => {
     const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
-    if (!kakaoKey) return;
+    if (!kakaoKey) {
+      mapError = '카카오맵 키가 설정되지 않았습니다.';
+      return;
+    }
 
     const script = document.createElement('script');
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
+    script.onerror = (e) => {
+      console.error('[KakaoMap] SDK script load failed:', e);
+      mapError = '카카오맵 SDK를 불러올 수 없습니다.';
+    };
     script.onload = () => {
+      console.log('[KakaoMap] SDK script loaded, kakao object:', window.kakao);
+      if (!window.kakao?.maps?.load) {
+        console.error('[KakaoMap] kakao.maps.load not available');
+        mapError = '카카오맵 SDK가 올바르게 로드되지 않았습니다.';
+        return;
+      }
       window.kakao.maps.load(() => {
-        const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
-        const map = new window.kakao.maps.Map(mapContainer, {
-          center: position,
-          level: 3
-        });
-        new window.kakao.maps.Marker({ position, map });
-        map.setZoomable(false);
+        console.log('[KakaoMap] maps.load callback fired');
+        try {
+          const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
+          const map = new window.kakao.maps.Map(mapContainer, {
+            center: position,
+            level: 3
+          });
+          new window.kakao.maps.Marker({ position, map });
+          map.setZoomable(false);
+          console.log('[KakaoMap] Map initialized successfully');
+        } catch (e) {
+          console.error('[KakaoMap] Map init error:', e);
+          mapError = '카카오맵 초기화에 실패했습니다.';
+        }
       });
     };
     document.head.appendChild(script);
@@ -76,10 +98,14 @@
   </div>
 
   <div class="map-container">
-    <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도"></div>
+    <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도">
+      {#if mapError}
+        <p class="map-error">{mapError}</p>
+      {/if}
+    </div>
     <a
       class="map-link"
-      href="https://map.kakao.com/link/map/더화이트베일,{venue.lat},{venue.lng}"
+      href="https://map.kakao.com/?urlX=503207.0&urlY=1107015.0&name=%EB%8D%94%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B2%A0%EC%9D%BC"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -171,6 +197,18 @@
     height: 250px;
     margin-bottom: $spacing-sm;
   }
+
+  .map-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    text-align: center;
+    margin: 0;
+  }
+
 
   .map-link {
     display: block;
