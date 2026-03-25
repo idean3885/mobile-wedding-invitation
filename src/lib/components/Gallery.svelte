@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from '$app/paths';
   import { gallery } from '$lib/data/wedding';
   import type { GalleryPhoto } from '$lib/data/wedding';
 
@@ -49,7 +50,7 @@
           aria-label="{photo.alt} 크게 보기"
         >
           <img
-            src={photo.thumb}
+            src={base + photo.thumb}
             alt={photo.alt}
             loading="lazy"
             width="300"
@@ -78,8 +79,9 @@
       >✕</button>
 
       <img
-        src={photos[activeIndex].src}
+        src={base + photos[activeIndex].src}
         alt={photos[activeIndex].alt}
+        loading="lazy"
         class="gallery__dialog-img"
       />
 

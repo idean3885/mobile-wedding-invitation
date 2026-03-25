@@ -5,7 +5,7 @@
 
 ## Summary
 
-모바일 최적화 청첩장을 단일 페이지 스크롤 구조의 정적 사이트로 구현한다. SvelteKit static adapter로 빌드하여 AppPaaS에 배포한다. 대문, 갤러리, 오시는 길, 마음 전하실 곳 4개 섹션을 섹션별 Svelte 컴포넌트로 분리하여 디자이너 협업을 지원한다.
+모바일 최적화 청첩장을 단일 페이지 스크롤 구조의 정적 사이트로 구현한다. SvelteKit static adapter로 빌드하여 GitHub Pages에 배포한다. 대문, 갤러리, 오시는 길, 마음 전하실 곳 4개 섹션을 섹션별 Svelte 컴포넌트로 분리하여 디자이너 협업을 지원한다.
 
 ## Technical Context
 
@@ -20,6 +20,8 @@
 **Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 13장 (실제 웨딩 사진)
 **Venue**: 남부터미널 더화이트베일 3층 V홀 | 2026-06-06(토) 15:00
 **Hero Image**: IMG_4689.JPG | **Gallery**: IMG_4677~4690 중 대문 제외 13장
+**Deployment**: GitHub Pages (`idean3885.github.io/mobile-wedding-invitation`) + GitHub Actions CI/CD
+**Map**: Kakao Map JavaScript SDK (VITE_KAKAO_MAP_KEY, build-time via GitHub Secrets)
 
 ## Constitution Check
 
@@ -49,6 +51,9 @@ specs/001-wedding-invitation/
 ### Source Code (repository root)
 
 ```text
+.github/
+└── workflows/
+    └── deploy.yml               # GitHub Actions 배포 워크플로우
 src/
 ├── lib/
 │   ├── components/
@@ -66,8 +71,7 @@ src/
 ├── app.html                     # HTML 셸 + OG 메타 태그
 └── static/
     ├── images/                  # 대문 사진, 갤러리 원본
-    ├── og-image.jpg             # 썸네일 대표 사진 (1200x630px)
-    └── map.webp                 # 지도 정적 이미지
+    └── og-image.jpg             # 썸네일 대표 사진 (1200x630px)
 ```
 
 **Structure Decision**: SvelteKit 단일 프로젝트 구조. 백엔드 없음. `src/lib/components/`에 섹션별 컴포넌트를 배치하고, `src/lib/data/`에 정적 데이터를 분리하여 콘텐츠 교체 시 데이터 파일만 수정하면 된다.

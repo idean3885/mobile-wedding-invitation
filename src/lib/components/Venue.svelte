@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { venue } from '$lib/data/wedding';
 
   const typeLabel: Record<string, string> = {
@@ -36,6 +37,28 @@
       toastVisible = false;
     }, 2000);
   }
+
+  let mapContainer: HTMLElement;
+
+  onMount(() => {
+    const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
+    if (!kakaoKey) return;
+
+    const script = document.createElement('script');
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
+        const map = new window.kakao.maps.Map(mapContainer, {
+          center: position,
+          level: 3
+        });
+        new window.kakao.maps.Marker({ position, map });
+        map.setZoomable(false);
+      });
+    };
+    document.head.appendChild(script);
+  });
 </script>
 
 <section class="venue">
@@ -53,17 +76,20 @@
   </div>
 
   <div class="map-container">
-    <iframe
-      src="https://map.naver.com/p/entry/place/12023277?c=15.00,0,0,0,dh"
-      width="100%"
-      height="250"
-      style="border: none;"
-      loading="lazy"
-      title="{venue.name} 위치 지도"
-    ></iframe>
-    <a class="map-link" href={venue.mapLink} target="_blank" rel="noopener noreferrer">
-      네이버 지도에서 보기
-    </a>
+    <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도"></div>
+    <div class="map-links">
+      <a class="map-link map-link--naver" href={venue.mapLink} target="_blank" rel="noopener noreferrer">
+        네이버 지도
+      </a>
+      <a
+        class="map-link map-link--kakao"
+        href="https://map.kakao.com/link/to/더화이트베일,{venue.lat},{venue.lng}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        카카오맵
+      </a>
+    </div>
   </div>
 
   <ul class="directions">
@@ -144,20 +170,42 @@
     margin-bottom: $spacing-lg;
   }
 
-  iframe {
+  .map-embed {
     display: block;
     width: 100%;
     height: 250px;
+    border: 1px solid $color-divider;
     margin-bottom: $spacing-sm;
   }
 
+  .map-links {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+  }
+
   .map-link {
+    flex: 1;
     display: block;
     text-align: center;
     font-size: $font-size-sm;
-    color: $color-primary;
-    text-decoration: underline;
-    margin-top: $spacing-xs;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: $spacing-sm $spacing-xs;
+    min-height: $min-touch-target;
+    line-height: $min-touch-target;
+    font-weight: bold;
+
+    &--naver {
+      color: #03c75a;
+      border: 1px solid #03c75a;
+    }
+
+    &--kakao {
+      color: #3a1d1d;
+      background: #fee500;
+      border: 1px solid #fee500;
+    }
   }
 
   .directions {
