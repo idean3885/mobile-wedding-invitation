@@ -51,8 +51,16 @@
 
     const script = document.createElement('script');
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
-    script.onerror = (e) => {
+    script.onerror = async (e) => {
       console.error('[KakaoMap] SDK script load failed:', e);
+      try {
+        const res = await fetch(script.src);
+        console.error('[KakaoMap] fetch status:', res.status, res.statusText);
+        const body = await res.text();
+        console.error('[KakaoMap] fetch body:', body.substring(0, 500));
+      } catch (fetchErr) {
+        console.error('[KakaoMap] fetch also failed:', fetchErr);
+      }
       mapError = '카카오맵 SDK를 불러올 수 없습니다.';
     };
     script.onload = () => {
@@ -105,7 +113,7 @@
     </div>
     <a
       class="map-link"
-      href="https://map.kakao.com/?urlX=503207.0&urlY=1107015.0&name=%EB%8D%94%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B2%A0%EC%9D%BC"
+      href="https://kko.to/R9cjhb8TXD"
       target="_blank"
       rel="noopener noreferrer"
     >
