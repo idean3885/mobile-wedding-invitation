@@ -174,7 +174,6 @@
     display: block;
     width: 100%;
     height: 250px;
-    border: 1px solid $color-divider;
     margin-bottom: $spacing-sm;
   }
 
