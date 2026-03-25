@@ -99,7 +99,7 @@
   </ul>
 
   {#if venue.parking}
-    <div class="parking">
+    <div class="direction-item parking">
       <span class="direction-type">주차</span>
       <span class="direction-desc">{venue.parking}</span>
     </div>
@@ -199,6 +199,10 @@
 
   .direction-desc {
     color: $color-text-light;
+  }
+
+  .parking {
+    margin-top: $spacing-sm;
   }
 
   .toast {
