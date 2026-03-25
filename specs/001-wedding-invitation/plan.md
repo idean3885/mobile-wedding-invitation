@@ -20,8 +20,10 @@
 **Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 13장 (실제 웨딩 사진)
 **Venue**: 남부터미널 더화이트베일 3층 V홀 | 2026-06-06(토) 15:00
 **Hero Image**: IMG_4689.JPG | **Gallery**: IMG_4677~4690 중 대문 제외 13장
-**Deployment**: GitHub Pages (`idean3885.github.io/mobile-wedding-invitation`) + GitHub Actions CI/CD
-**Map**: Kakao Map JavaScript SDK (VITE_KAKAO_MAP_KEY, build-time via GitHub Secrets)
+**Deployment**: GitHub Pages + 커스텀 도메인 (`j4df09bd732eb302e05d225dd6ae40649.apppaas.app` CNAME → `idean3885.github.io`) + GitHub Actions CI/CD
+**Map**: 카카오맵 지도 퍼가기 roughmap 임베드 (API 키 불필요, `roughmapLoader.js` 동기 로드)
+**Map Link**: `https://place.map.kakao.com/11024925`
+**Base Path**: `/` (커스텀 도메인 루트 서빙)
 
 ## Constitution Check
 
