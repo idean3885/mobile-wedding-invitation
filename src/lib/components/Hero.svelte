@@ -49,6 +49,8 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     &__content {

@@ -88,9 +88,9 @@ export const venue: Venue = {
 
 export const accounts: AccountEntry[] = [
   { side: 'groom', relation: 'self', bank: '국민은행', holder: '김동영', number: '444402-01-331651' },
-  { side: 'groom', relation: 'father', bank: 'OO은행', holder: '김병길', number: '000-0000-0000' },
-  { side: 'groom', relation: 'mother', bank: 'OO은행', holder: '배진우', number: '000-0000-0000' },
+  { side: 'groom', relation: 'father', bank: '국민은행', holder: '김병길', number: '781002-01-148004' },
+  { side: 'groom', relation: 'mother', bank: '신한은행', holder: '배진우', number: '110-366-348032' },
   { side: 'bride', relation: 'self', bank: 'OO은행', holder: '이지혜', number: '000-0000-0000' },
-  { side: 'bride', relation: 'father', bank: 'OO은행', holder: '이창열', number: '000-0000-0000' },
-  { side: 'bride', relation: 'mother', bank: 'OO은행', holder: '서승순', number: '000-0000-0000' }
+  { side: 'bride', relation: 'father', bank: '농협은행', holder: '이창열', number: '411-12-379828' },
+  { side: 'bride', relation: 'mother', bank: '하나은행', holder: '서승순', number: '633-072610-00108' }
 ];

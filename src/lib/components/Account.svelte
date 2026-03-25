@@ -110,9 +110,14 @@
                 <span class="account__relation">{RELATION_LABEL[entry.relation]}</span>
                 <span class="account__bank">{entry.bank}</span>
                 <span class="account__holder">{entry.holder}</span>
-                <span class="account__number" data-account-number={entry.number}>
+                <button
+                  class="account__number"
+                  type="button"
+                  data-account-number={entry.number}
+                  on:click={() => copyToClipboard(entry.number)}
+                >
                   {entry.number}
-                </span>
+                </button>
                 <button
                   class="account__copy-btn"
                   type="button"
@@ -208,6 +213,18 @@
 
   .account__number {
     color: $color-text-light;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+
+    &:active {
+      color: $color-primary;
+    }
   }
 
   .account__copy-btn {
