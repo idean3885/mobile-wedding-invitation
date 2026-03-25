@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { env } from '$env/dynamic/public';
   import { venue } from '$lib/data/wedding';
 
   const typeLabel: Record<string, string> = {
@@ -41,8 +42,8 @@
   let mapContainer: HTMLElement;
 
   onMount(() => {
-    const kakaoKey = import.meta.env.VITE_KAKAO_MAP_KEY;
-    console.log('[Map] VITE_KAKAO_MAP_KEY present:', !!kakaoKey, kakaoKey ? `(${kakaoKey.substring(0, 4)}...)` : '');
+    const kakaoKey = env.PUBLIC_KAKAO_MAP_KEY;
+    console.log('[Map] PUBLIC_KAKAO_MAP_KEY present:', !!kakaoKey, kakaoKey ? `(${kakaoKey.substring(0, 4)}...)` : '');
     if (!kakaoKey) {
       return;
     }
