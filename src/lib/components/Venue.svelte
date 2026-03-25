@@ -38,18 +38,12 @@
   }
 
   onMount(() => {
-    const script = document.createElement('script');
-    script.charset = 'UTF-8';
-    script.src = 'https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js';
-    script.onload = () => {
-      new window.daum.roughmap.Lander({
-        timestamp: '1774429940765',
-        key: 'jxgmez3xbxi',
-        mapWidth: '640',
-        mapHeight: '360'
-      }).render();
-    };
-    document.head.appendChild(script);
+    new window.daum.roughmap.Lander({
+      timestamp: '1774429940765',
+      key: 'jxgmez3xbxi',
+      mapWidth: '640',
+      mapHeight: '360'
+    }).render();
   });
 </script>
 
