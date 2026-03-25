@@ -68,7 +68,8 @@ export const gallery: GalleryPhoto[] = [
   { src: '/images/gallery-10.webp', thumb: '/images/gallery-10-thumb.webp', alt: '웨딩 사진 10', order: 10 },
   { src: '/images/gallery-11.webp', thumb: '/images/gallery-11-thumb.webp', alt: '웨딩 사진 11', order: 11 },
   { src: '/images/gallery-12.webp', thumb: '/images/gallery-12-thumb.webp', alt: '웨딩 사진 12', order: 12 },
-  { src: '/images/gallery-13.webp', thumb: '/images/gallery-13-thumb.webp', alt: '웨딩 사진 13', order: 13 }
+  { src: '/images/gallery-13.webp', thumb: '/images/gallery-13-thumb.webp', alt: '웨딩 사진 13', order: 13 },
+  { src: '/images/gallery-14.webp', thumb: '/images/gallery-14-thumb.webp', alt: '웨딩 사진 14', order: 14 }
 ];
 
 export const venue: Venue = {
