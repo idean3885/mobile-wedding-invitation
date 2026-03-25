@@ -37,6 +37,8 @@
     }, 2000);
   }
 
+  let mapWrap: HTMLElement;
+
   onMount(() => {
     new window.daum.roughmap.Lander({
       timestamp: '1774429940765',
@@ -44,6 +46,17 @@
       mapWidth: '640',
       mapHeight: '360'
     }).render();
+
+    requestAnimationFrame(() => {
+      const inner = mapWrap.querySelector('.root_daum_roughmap') as HTMLElement;
+      if (!inner) return;
+      const containerWidth = mapWrap.clientWidth;
+      const scale = containerWidth / 640;
+      inner.style.transformOrigin = 'top left';
+      inner.style.transform = `scale(${scale})`;
+      mapWrap.style.height = `${Math.round(360 * scale)}px`;
+      mapWrap.style.overflow = 'hidden';
+    });
   });
 </script>
 
@@ -62,7 +75,9 @@
   </div>
 
   <div class="map-container">
-    <div id="daumRoughmapContainer1774429940765" class="root_daum_roughmap root_daum_roughmap_landing map-embed"></div>
+    <div bind:this={mapWrap} class="map-embed">
+      <div id="daumRoughmapContainer1774429940765" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+    </div>
     <a
       class="map-link"
       href="https://place.map.kakao.com/11024925"
@@ -154,15 +169,7 @@
   .map-embed {
     display: block;
     width: 100%;
-    overflow: hidden;
     margin-bottom: $spacing-sm;
-
-    :global(.wrap_map) {
-      width: 640px;
-      height: 360px;
-      transform-origin: top left;
-      transform: scale(calc(min(100vw - #{$spacing-md} * 2, #{$max-width-mobile} - #{$spacing-md} * 2) / 640));
-    }
   }
 
   .map-link {
