@@ -50,7 +50,7 @@ export const wedding: Wedding = {
   groomRank: '장남',
   brideRank: '차녀',
   date: '2026년 6월 6일 토요일 오후 3시',
-  heroImage: '/images/hero.webp',
+  heroImage: '/images/hero.jpg',
   greeting:
     '사랑이 무엇인지 물어본다면,\n서로의 이름을 대답하기로 했습니다.\n\n낯선 이끌림이 익숙한 편안함이 된 오늘,\n이제는 든든한 \'우리\'로 시작하려 합니다.\n\n동영과 지혜의 시작에 함께해 주세요.\n축복의 자리에 귀한 걸음 부탁드립니다.'
 };
