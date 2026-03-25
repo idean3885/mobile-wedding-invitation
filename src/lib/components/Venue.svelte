@@ -149,13 +149,17 @@
 
   .map-container {
     margin-bottom: $spacing-lg;
+    overflow: hidden;
   }
 
   .map-embed {
     display: block;
     width: 100%;
-    height: 250px;
     margin-bottom: $spacing-sm;
+
+    :global(div) {
+      max-width: 100% !important;
+    }
   }
 
   .map-link {
