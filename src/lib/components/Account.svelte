@@ -81,10 +81,15 @@
     renderGroup(brideAccounts, 'bride')
   ];
 
-  let openSide: string | null = null;
+  let openSides: Set<string> = new Set();
 
   function toggle(side: string) {
-    openSide = openSide === side ? null : side;
+    if (openSides.has(side)) {
+      openSides.delete(side);
+    } else {
+      openSides.add(side);
+    }
+    openSides = openSides;
   }
 </script>
 
@@ -98,12 +103,12 @@
           class="account__toggle"
           type="button"
           on:click={() => toggle(i === 0 ? 'groom' : 'bride')}
-          aria-expanded={openSide === (i === 0 ? 'groom' : 'bride')}
+          aria-expanded={openSides.has(i === 0 ? 'groom' : 'bride')}
         >
           <span class="account__side-label">{group.label}</span>
-          <span class="account__arrow" class:account__arrow--open={openSide === (i === 0 ? 'groom' : 'bride')}>▾</span>
+          <span class="account__arrow" class:account__arrow--open={openSides.has(i === 0 ? 'groom' : 'bride')}>▾</span>
         </button>
-        {#if openSide === (i === 0 ? 'groom' : 'bride')}
+        {#if openSides.has(i === 0 ? 'groom' : 'bride')}
           <ul class="account__list">
             {#each group.entries as entry}
               <li class="account__item">
