@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { env } from '$env/dynamic/public';
   import { venue } from '$lib/data/wedding';
 
   const typeLabel: Record<string, string> = {
@@ -38,38 +36,6 @@
       toastVisible = false;
     }, 2000);
   }
-
-  let mapContainer: HTMLElement;
-
-  onMount(() => {
-    const kakaoKey = env.PUBLIC_KAKAO_MAP_KEY;
-    console.log('[Map] PUBLIC_KAKAO_MAP_KEY present:', !!kakaoKey, kakaoKey ? `(${kakaoKey.substring(0, 4)}...)` : '');
-    if (!kakaoKey) {
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
-    script.onerror = () => console.log('[Map] SDK load failed');
-    script.onload = () => {
-      window.kakao.maps.load(() => {
-        const position = new window.kakao.maps.LatLng(venue.lat, venue.lng);
-        const map = new window.kakao.maps.Map(mapContainer, {
-          center: position,
-          level: 3
-        });
-
-        new window.kakao.maps.Marker({
-          position,
-          map
-        });
-
-        map.setZoomable(false);
-        console.log('[Map] Kakao map loaded');
-      });
-    };
-    document.head.appendChild(script);
-  });
 </script>
 
 <section class="venue">
@@ -87,7 +53,17 @@
   </div>
 
   <div class="map-container">
-    <div bind:this={mapContainer} class="map-embed" aria-label="{venue.name} 위치 지도"></div>
+    <iframe
+      src="https://map.naver.com/p/entry/place/12023277?c=15.00,0,0,0,dh"
+      width="100%"
+      height="250"
+      style="border: none;"
+      loading="lazy"
+      title="{venue.name} 위치 지도"
+    ></iframe>
+    <a class="map-link" href={venue.mapLink} target="_blank" rel="noopener noreferrer">
+      네이버 지도에서 보기
+    </a>
   </div>
 
   <ul class="directions">
@@ -168,11 +144,20 @@
     margin-bottom: $spacing-lg;
   }
 
-  .map-embed {
+  iframe {
+    display: block;
     width: 100%;
     height: 250px;
-    border: 1px solid $color-divider;
     margin-bottom: $spacing-sm;
+  }
+
+  .map-link {
+    display: block;
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $color-primary;
+    text-decoration: underline;
+    margin-top: $spacing-xs;
   }
 
   .directions {
