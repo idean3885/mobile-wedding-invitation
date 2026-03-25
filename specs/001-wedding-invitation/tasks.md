@@ -20,7 +20,7 @@
 **Purpose**: SvelteKit 프로젝트 초기화 및 기본 구조 구축
 
 - [x] T001 SvelteKit 프로젝트 생성 (Skeleton, TypeScript, SCSS 선택) 및 의존성 설치
-- [x] T002 `@sveltejs/adapter-static` 설치 및 `svelte.config.js` 설정 (prerender: entries: ['/'], precompress: true)
+- [x] T002 adapter-node → adapter-static 변경: `svelte.config.js`에서 adapter-node를 `@sveltejs/adapter-static`으로 교체, `@sveltejs/adapter-static` 설치 (prerender: entries: ['/'], precompress: true)
 - [x] T003 [P] SCSS 환경 설정: `src/lib/styles/_variables.scss` (디자인 토큰) 및 `src/lib/styles/global.scss` (리셋, 공통 스타일) 생성
 - [x] T004 [P] 정적 데이터 타입 정의 및 샘플 데이터 작성: `src/lib/data/wedding.ts` (Wedding, Gallery, Venue, Account 타입 + 플레이스홀더 데이터)
 - [x] T005 [P] `src/app.html`에 OG 메타 태그 삽입 (og:title, og:description, og:image, og:url) 및 뷰포트 메타 태그 설정
@@ -51,6 +51,8 @@
 
 - [x] T033 [P] 실제 웨딩 사진 14장을 `static/images/`로 이동: IMG_4689.JPG → hero.jpg (대문), IMG_4677~4690(대문 제외 13장) → gallery-01~13.jpg. `wedding.ts` 데이터 업데이트
 - [x] T034 [P] `wedding.ts` 예식 정보 실제 데이터로 업데이트: 예식일(2026년 6월 6일 토요일 오후 3시), 예식장(남부터미널 더화이트베일 3층 V홀)
+- [ ] T035 [P] GitHub Actions 워크플로우 작성: `.github/workflows/deploy.yml` — main 브랜치 푸시 시 빌드 + GitHub Pages 배포 자동화, VITE_KAKAO_MAP_KEY를 GitHub Secrets에서 주입
+- [ ] T036 adapter-node → adapter-static 변경: `svelte.config.js`에서 adapter-node를 adapter-static으로 교체, `@sveltejs/adapter-static` 설치
 
 ### Implementation for User Story 1
 
@@ -104,7 +106,7 @@
 
 ### Implementation for User Story 4
 
-- [x] T020 [US4] 지도 임베딩: 카카오 지도 SDK 임베딩 + 네이버 지도 외부 링크 연결 — 더화이트베일 서초중앙로 14
+- [x] T020 [US4] 지도 임베딩: 카카오 지도 SDK 임베딩 (VITE_KAKAO_MAP_KEY, GitHub Secrets에서 빌드 타임 주입) + 네이버 지도 외부 링크
 - [x] T021 [US4] Venue 컴포넌트 구현: `src/lib/components/Venue.svelte` — 남부터미널 더화이트베일 3층 V홀, 주소, 지도 이미지(탭 시 외부 지도 앱 연결), 교통 안내(지하철/버스/자가용) 표시. 이미지에 대체 텍스트 적용
 - [ ] T022 [US4] Venue 컴포넌트 스코프 SCSS 작성: 지도 이미지 영역, 주소 텍스트, 교통 수단별 안내 레이아웃, 터치 타겟 준수 — 디자이너 후
 - [ ] T023 [US4] 지도 앱 미설치 시 웹 지도 페이지 폴백: 지도 링크를 범용 URL 스킴으로 설정하여 앱 미설치 시 웹 브라우저로 열리도록 처리
@@ -138,7 +140,7 @@
 - [x] T029 ~~가로 모드 / 데스크톱 대응~~: 스펙에서 제외 — 모바일 세로(portrait)만 지원
 - [ ] T030 [P] 클립보드 미지원 브라우저 대응: Clipboard API 미지원 시 execCommand 폴백, 양쪽 실패 시 텍스트 선택 상태 전환 검증
 - [ ] T031 성능 검증: Lighthouse 모바일 점수 90+ 달성, FCP 1.5초 이내, JS 번들 50KB(gzip) 이하, 갤러리 확대 뷰 0.3초 이내 확인
-- [ ] T032 빌드 및 배포 검증: `npm run build` 후 `build/` 디렉토리 정적 파일 확인, AppPaaS 배포 테스트
+- [ ] T032 GitHub Pages 배포 검증: GitHub Actions 워크플로우 확인, `idean3885.github.io/mobile-wedding-invitation` 접근 테스트
 
 ---
 
