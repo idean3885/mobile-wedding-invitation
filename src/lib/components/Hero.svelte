@@ -1,13 +1,15 @@
 <script lang="ts">
+  import { base } from '$app/paths';
   import { wedding, venue } from '$lib/data/wedding';
 </script>
 
 <section class="hero">
   <div class="hero__image-wrap">
     <img
-      src={wedding.heroImage}
+      src={base + wedding.heroImage}
       alt="{wedding.groomName}과 {wedding.brideName}의 웨딩 사진"
       class="hero__image"
+      loading="eager"
       fetchpriority="high"
     />
   </div>
