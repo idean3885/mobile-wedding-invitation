@@ -230,16 +230,16 @@
   .account__copy-btn {
     min-height: $min-touch-target;
     padding: 0 $spacing-sm;
-    background: none;
-    border: 1px solid $color-divider;
+    background: $color-primary;
+    border: none;
     border-radius: 4px;
     font-size: $font-size-sm;
-    color: $color-text;
+    color: #fff;
     cursor: pointer;
     margin-left: auto;
 
     &:active {
-      background-color: $color-divider;
+      opacity: 0.8;
     }
   }
 </style>

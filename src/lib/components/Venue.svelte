@@ -152,9 +152,9 @@
 
   .copy-btn {
     font-size: $font-size-sm;
-    color: $color-primary;
-    background: none;
-    border: 1px solid $color-primary;
+    color: #fff;
+    background: $color-primary;
+    border: none;
     border-radius: 4px;
     padding: $spacing-xs $spacing-sm;
     min-height: $min-touch-target;
