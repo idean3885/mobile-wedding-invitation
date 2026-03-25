@@ -149,16 +149,19 @@
 
   .map-container {
     margin-bottom: $spacing-lg;
-    overflow: hidden;
   }
 
   .map-embed {
     display: block;
     width: 100%;
+    overflow: hidden;
     margin-bottom: $spacing-sm;
 
-    :global(div) {
-      max-width: 100% !important;
+    :global(.wrap_map) {
+      width: 640px;
+      height: 360px;
+      transform-origin: top left;
+      transform: scale(calc(min(100vw - #{$spacing-md} * 2, #{$max-width-mobile} - #{$spacing-md} * 2) / 640));
     }
   }
 
