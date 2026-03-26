@@ -17,9 +17,9 @@
 **Project Type**: static-web-app
 **Performance Goals**: FCP 1.5초 이내 (4G), JS 번들 50KB(gzip) 이하
 **Constraints**: 서버 라운드트립 없음, 정적 파일만, 이미지 WebP/AVIF + lazy loading
-**Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 13장 (실제 웨딩 사진)
+**Scale/Scope**: 단일 페이지, 4개 섹션, 갤러리 16장 (실제 웨딩 사진)
 **Venue**: 남부터미널 더화이트베일 3층 V홀 | 2026-06-06(토) 15:00
-**Hero Image**: IMG_4689.JPG | **Gallery**: IMG_4677~4690 중 대문 제외 13장
+**Hero Image**: IMG_4689.JPG → hero.webp | **Gallery**: 16장 (gallery-01~16.webp + thumb)
 **Deployment**: GitHub Pages + 커스텀 도메인 (`j4df09bd732eb302e05d225dd6ae40649.apppaas.app` CNAME → `idean3885.github.io`) + GitHub Actions CI/CD
 **Map**: 카카오맵 지도 퍼가기 roughmap 임베드 (API 키 불필요, `roughmapLoader.js` 동기 로드)
 **Map Link**: `https://place.map.kakao.com/11024925`
@@ -73,7 +73,7 @@ src/
 ├── app.html                     # HTML 셸 + OG 메타 태그
 └── static/
     ├── images/                  # 대문 사진, 갤러리 원본
-    └── og-image.jpg             # 썸네일 대표 사진 (1200x630px)
+    └── og-image.jpg             # 썸네일 대표 사진 (1200x630px, og:image URL에 ?v=2 cache busting 적용)
 ```
 
 **Structure Decision**: SvelteKit 단일 프로젝트 구조. 백엔드 없음. `src/lib/components/`에 섹션별 컴포넌트를 배치하고, `src/lib/data/`에 정적 데이터를 분리하여 콘텐츠 교체 시 데이터 파일만 수정하면 된다.
