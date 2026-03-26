@@ -49,7 +49,7 @@
 
 ### Pre-requisite: 실제 이미지 배치
 
-- [x] T033 [P] 실제 웨딩 사진 14장을 `static/images/`로 이동: IMG_4689.JPG → hero.jpg (대문), IMG_4677~4690(대문 제외 13장) → gallery-01~13.jpg. `wedding.ts` 데이터 업데이트
+- [x] T033 [P] 실제 웨딩 사진을 `static/images/`로 이동: hero.webp (대문) + gallery-01~16.webp (갤러리 16장) + thumb. `wedding.ts` 데이터 업데이트
 - [x] T034 [P] `wedding.ts` 예식 정보 실제 데이터로 업데이트: 예식일(2026년 6월 6일 토요일 오후 3시), 예식장(남부터미널 더화이트베일 3층 V홀)
 - [x] T035 [P] GitHub Actions 워크플로우 작성: `.github/workflows/deploy.yml` — main 브랜치 푸시 시 빌드 + GitHub Pages 배포 자동화
 - [x] T036 adapter-node → adapter-static 변경: `svelte.config.js`에서 adapter-node를 adapter-static으로 교체, `@sveltejs/adapter-static` 설치
@@ -76,7 +76,7 @@
 
 - [x] T013 [US2] `src/app.html`의 OG 메타 태그를 실제 콘텐츠로 업데이트: og:title ("동영 ♥ 지혜 결혼합니다"), og:description ("2026년 6월 6일 토요일 오후 3시 | 남부터미널 더화이트베일 3층 V홀"), og:image, og:url
 - [x] T014 [US2] `static/og-image.jpg` 준비: 웨딩 사진으로 교체 완료
-- [x] T015 [US2] 카카오톡 OG 캐시 검증: 배포 후 확인
+- [x] T015 [US2] 카카오톡 OG 캐시 검증: 배포 후 확인. og:image 절대 URL 변환 + cache busting(`?v=2`) 적용으로 bit.ly 단축 URL 캐시 문제 해결
 
 **Checkpoint**: 카카오톡에 링크 붙여넣기 시 썸네일 카드가 정상 표시됨
 
@@ -90,10 +90,10 @@
 
 ### Implementation for User Story 3
 
-- [x] T016 [US3] Gallery 컴포넌트 구현: `src/lib/components/Gallery.svelte` — `wedding.ts`의 photos 데이터(13장) 를 순서대로 표시. 각 이미지에 대체 텍스트 적용, lazy loading 설정
+- [x] T016 [US3] Gallery 컴포넌트 구현: `src/lib/components/Gallery.svelte` — `wedding.ts`의 photos 데이터(16장)를 순서대로 표시. 각 이미지에 대체 텍스트 적용, lazy loading 설정
 - [x] T017 [US3] Gallery 확대 뷰 구현: `src/lib/components/Gallery.svelte` 내부에 `<dialog>` 기반 전체 화면 오버레이, 사진 간 이동 기능, 닫기 기능
 - [x] T018 [US3] Gallery 컴포넌트 스코프 SCSS: 구현 완료
-- [x] T019 [US3] 이미지 최적화: webp 변환 완료 (full 2000px, thumb 1000px)
+- [x] T019 [US3] 이미지 최적화: webp 변환 완료 (16장, full 2000px, thumb 1000px, JPEG quality 100)
 
 **Checkpoint**: 갤러리에서 사진 목록 표시 → 탭 시 확대 → 이동 → 닫기 전체 흐름 동작
 
