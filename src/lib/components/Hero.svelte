@@ -15,24 +15,28 @@
   </div>
 
   <div class="hero__content">
-    <p class="hero__greeting">{@html wedding.greeting.replace(/\n/g, '<br />')}</p>
-
     <div class="hero__names">
       <div class="hero__side">
         <span class="hero__parents">{wedding.groomParents.father} · {wedding.groomParents.mother}의 {wedding.groomRank}</span>
         <span class="hero__name">{wedding.groomName}</span>
       </div>
-      <span class="hero__dot">·</span>
+      <span class="hero__ampersand">&</span>
       <div class="hero__side">
         <span class="hero__parents">{wedding.brideParents.father} · {wedding.brideParents.mother}의 {wedding.brideRank}</span>
         <span class="hero__name">{wedding.brideName}</span>
       </div>
     </div>
 
+    <div class="hero__divider"></div>
+
     <div class="hero__info">
       <p class="hero__date">{wedding.date}</p>
       <p class="hero__venue">{venue.name}</p>
     </div>
+
+    <div class="hero__divider"></div>
+
+    <p class="hero__greeting">{@html wedding.greeting.replace(/\n/g, '<br />')}</p>
   </div>
 </section>
 
@@ -41,6 +45,7 @@
 
   .hero {
     text-align: center;
+    background: $color-background;
 
     &__image-wrap {
       width: 100%;
@@ -56,59 +61,83 @@
     }
 
     &__content {
-      padding: $spacing-xl $spacing-md;
-    }
-
-    &__greeting {
-      font-size: $font-size-base;
-      color: $color-text-light;
-      line-height: 2;
-      margin-bottom: $spacing-xl;
+      padding: $spacing-xxl $spacing-lg;
     }
 
     &__names {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: $spacing-md;
+      gap: $spacing-lg;
       margin-bottom: $spacing-xl;
     }
 
     &__side {
       display: flex;
       flex-direction: column;
-      gap: $spacing-xs;
+      gap: $spacing-sm;
     }
 
     &__parents {
-      font-size: $font-size-sm;
+      font-family: $font-family-serif;
+      font-size: $font-size-xs;
+      font-weight: 300;
       color: $color-text-light;
+      letter-spacing: 0.05em;
     }
 
     &__name {
-      font-size: $font-size-xl;
-      font-weight: 600;
+      font-family: $font-family-serif;
+      font-size: $font-size-xxl;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: $color-text;
     }
 
-    &__dot {
-      font-size: $font-size-xl;
+    &__ampersand {
+      font-family: 'Georgia', serif;
+      font-size: $font-size-lg;
+      font-style: italic;
       color: $color-primary;
+      margin-top: 16px;
+    }
+
+    &__divider {
+      width: 1px;
+      height: 40px;
+      background: $color-divider;
+      margin: $spacing-xl auto;
     }
 
     &__info {
       display: flex;
       flex-direction: column;
-      gap: $spacing-xs;
+      gap: $spacing-sm;
     }
 
     &__date {
+      font-family: $font-family-serif;
       font-size: $font-size-base;
+      font-weight: 400;
       color: $color-text;
+      letter-spacing: 0.1em;
     }
 
     &__venue {
+      font-family: $font-family-serif;
       font-size: $font-size-sm;
+      font-weight: 300;
       color: $color-text-light;
+      letter-spacing: 0.05em;
+    }
+
+    &__greeting {
+      font-family: $font-family-serif;
+      font-size: $font-size-sm;
+      font-weight: 300;
+      color: $color-text-light;
+      line-height: 2.2;
+      letter-spacing: 0.04em;
     }
   }
 </style>

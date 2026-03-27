@@ -41,6 +41,8 @@
 </script>
 
 <section class="gallery">
+  <h2 class="section-title">GALLERY</h2>
+
   <ul class="gallery__grid">
     {#each photos as photo, index}
       <li class="gallery__item">
@@ -106,15 +108,13 @@
   @use '../styles/variables' as *;
 
   .gallery {
-    padding: $spacing-lg $spacing-md;
-
     &__grid {
       list-style: none;
       margin: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: $spacing-sm;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
     }
 
     &__item {
@@ -130,6 +130,8 @@
       border: none;
       background: $color-divider;
       cursor: pointer;
+      min-width: 0;
+      min-height: 0;
     }
 
     &__img {
@@ -137,6 +139,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform $transition-base;
+    }
+
+    &__thumb-btn:active &__img {
+      transform: scale(1.05);
     }
 
     &__dialog {
@@ -149,7 +156,7 @@
       height: 100vh;
 
       &::backdrop {
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.92);
       }
     }
 
@@ -207,10 +214,12 @@
     }
 
     &__counter {
-      color: #fff;
-      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: $font-family-base;
+      font-size: $font-size-xs;
       min-width: 48px;
       text-align: center;
+      letter-spacing: 0.1em;
     }
   }
 </style>

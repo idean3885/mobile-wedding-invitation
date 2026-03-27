@@ -61,25 +61,24 @@
 </script>
 
 <section class="venue">
-  <h2 class="section-title">오시는 길</h2>
+  <h2 class="section-title">LOCATION</h2>
 
-  <div class="venue-info">
-    <p class="venue-name">{venue.name}</p>
-
-    <div class="address-row">
-      <span class="address">{venue.address}</span>
-      <button class="copy-btn" type="button" on:click={copyAddress} aria-label="주소 복사">
+  <div class="venue__info">
+    <p class="venue__name">{venue.name}</p>
+    <div class="venue__address-row">
+      <span class="venue__address">{venue.address}</span>
+      <button class="venue__copy-btn" type="button" on:click={copyAddress} aria-label="주소 복사">
         복사
       </button>
     </div>
   </div>
 
-  <div class="map-container">
-    <div bind:this={mapWrap} class="map-embed">
+  <div class="venue__map-container">
+    <div bind:this={mapWrap} class="venue__map-embed">
       <div id="daumRoughmapContainer1774429940765" class="root_daum_roughmap root_daum_roughmap_landing"></div>
     </div>
     <a
-      class="map-link"
+      class="venue__map-link"
       href="https://place.map.kakao.com/11024925"
       target="_blank"
       rel="noopener noreferrer"
@@ -88,24 +87,23 @@
     </a>
   </div>
 
-  <ul class="directions">
+  <div class="venue__directions">
     {#each venue.directions as dir}
-      <li class="direction-item">
-        <span class="direction-type">{typeLabel[dir.type] ?? dir.type}</span>
-        <span class="direction-desc">{dir.description}</span>
-      </li>
+      <div class="venue__direction">
+        <span class="venue__direction-type">{typeLabel[dir.type] ?? dir.type}</span>
+        <span class="venue__direction-desc">{dir.description}</span>
+      </div>
     {/each}
-  </ul>
-
-  {#if venue.parking}
-    <div class="direction-item parking">
-      <span class="direction-type">주차</span>
-      <span class="direction-desc">{venue.parking}</span>
-    </div>
-  {/if}
+    {#if venue.parking}
+      <div class="venue__direction">
+        <span class="venue__direction-type">주차</span>
+        <span class="venue__direction-desc">{venue.parking}</span>
+      </div>
+    {/if}
+  </div>
 
   {#if toastVisible}
-    <div class="toast" role="status" aria-live="polite">복사됨</div>
+    <div class="venue__toast" role="status" aria-live="polite">주소가 복사되었습니다</div>
   {/if}
 </section>
 
@@ -114,115 +112,127 @@
 
   .venue {
     position: relative;
-    padding: $spacing-xl $spacing-md;
     max-width: $max-width-mobile;
     margin: 0 auto;
-  }
 
-  .section-title {
-    font-size: $font-size-xl;
-    color: $color-primary;
-    text-align: center;
-    margin-bottom: $spacing-lg;
-  }
+    &__info {
+      margin-bottom: $spacing-lg;
+      text-align: center;
+    }
 
-  .venue-info {
-    margin-bottom: $spacing-md;
-    text-align: center;
-  }
+    &__name {
+      font-family: $font-family-serif;
+      font-size: $font-size-lg;
+      font-weight: 400;
+      color: $color-text;
+      margin-bottom: $spacing-sm;
+      letter-spacing: 0.05em;
+    }
 
-  .venue-name {
-    font-size: $font-size-lg;
-    color: $color-text;
-    margin-bottom: $spacing-sm;
-  }
+    &__address-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-sm;
+      flex-wrap: wrap;
+    }
 
-  .address-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: $spacing-sm;
-    flex-wrap: wrap;
-  }
+    &__address {
+      font-size: $font-size-sm;
+      color: $color-text-light;
+    }
 
-  .address {
-    font-size: $font-size-sm;
-    color: $color-text-light;
-  }
+    &__copy-btn {
+      font-family: $font-family-base;
+      font-size: $font-size-xs;
+      color: $color-primary;
+      background: none;
+      border: 1px solid $color-divider;
+      border-radius: $radius-sm;
+      padding: $spacing-xs $spacing-sm;
+      min-height: 32px;
+      min-width: 48px;
+      cursor: pointer;
+      transition: background $transition-base;
 
-  .copy-btn {
-    font-size: $font-size-sm;
-    color: #fff;
-    background: $color-primary;
-    border: none;
-    border-radius: 4px;
-    padding: $spacing-xs $spacing-sm;
-    min-height: $min-touch-target;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+      &:active {
+        background: $color-background-alt;
+      }
+    }
 
-  .map-container {
-    margin-bottom: $spacing-lg;
-  }
+    &__map-container {
+      margin-bottom: $spacing-lg;
+      border-radius: $radius-md;
+      overflow: hidden;
+      background: $color-white;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
 
-  .map-embed {
-    display: block;
-    width: 100%;
-    margin-bottom: $spacing-sm;
-  }
+    &__map-embed {
+      display: block;
+      width: 100%;
+    }
 
-  .map-link {
-    display: block;
-    text-align: center;
-    font-size: $font-size-sm;
-    color: $color-primary;
-    text-decoration: underline;
-    margin-top: $spacing-sm;
-  }
+    &__map-link {
+      display: block;
+      text-align: center;
+      font-family: $font-family-base;
+      font-size: $font-size-sm;
+      color: $color-primary;
+      padding: $spacing-md 0;
+      border-top: 1px solid $color-divider;
+      transition: background $transition-base;
 
-  .directions {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-sm;
-  }
+      &:active {
+        background: $color-background-alt;
+      }
+    }
 
-  .direction-item {
-    display: flex;
-    gap: $spacing-sm;
-    font-size: $font-size-sm;
-    color: $color-text;
-  }
+    &__directions {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+      background: $color-white;
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
 
-  .direction-type {
-    flex-shrink: 0;
-    font-weight: bold;
-    color: $color-primary;
-    min-width: 48px;
-  }
+    &__direction {
+      display: flex;
+      gap: $spacing-md;
+      font-size: $font-size-sm;
+      line-height: 1.6;
+    }
 
-  .direction-desc {
-    color: $color-text-light;
-  }
+    &__direction-type {
+      flex-shrink: 0;
+      font-family: $font-family-base;
+      font-weight: 500;
+      color: $color-primary;
+      min-width: 44px;
+      font-size: $font-size-xs;
+      letter-spacing: 0.05em;
+    }
 
-  .parking {
-    margin-top: $spacing-sm;
-  }
+    &__direction-desc {
+      color: $color-text-light;
+      font-size: $font-size-sm;
+    }
 
-  .toast {
-    position: fixed;
-    bottom: $spacing-xl;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    font-size: $font-size-sm;
-    padding: $spacing-sm $spacing-md;
-    border-radius: 20px;
-    pointer-events: none;
-    z-index: 100;
+    &__toast {
+      position: fixed;
+      bottom: $spacing-xl;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $color-text;
+      color: $color-white;
+      font-family: $font-family-base;
+      font-size: $font-size-sm;
+      padding: $spacing-sm $spacing-lg;
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 100;
+    }
   }
 </style>
