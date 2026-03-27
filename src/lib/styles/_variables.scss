@@ -1,27 +1,42 @@
-// Design Tokens - 디자이너 작업 시 이 파일의 값을 교체
-// Colors
-$color-primary: #b08968;
-$color-text: #333333;
-$color-text-light: #666666;
-$color-background: #fefefe;
-$color-divider: #e0e0e0;
+// Design Tokens - 모바일 청첩장 디자인 시스템
+// Colors - 웜 뉴트럴 팔레트
+$color-primary: #B09060;        // 로즈 골드
+$color-primary-light: #C4A97D;
+$color-text: #3D3530;           // 다크 브라운
+$color-text-light: #8C7B72;     // 그레이 브라운
+$color-background: #FAF8F5;     // 크림 화이트
+$color-background-alt: #F5F0EA; // 라이트 베이지
+$color-divider: #EDE9E4;
+$color-white: #FFFFFF;
 
 // Typography
+$font-family-serif: 'Noto Serif KR', 'Georgia', serif;
 $font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-$font-size-base: 16px;
+$font-size-xs: 12px;
 $font-size-sm: 14px;
-$font-size-lg: 20px;
-$font-size-xl: 24px;
-$font-size-xxl: 32px;
+$font-size-base: 15px;
+$font-size-lg: 18px;
+$font-size-xl: 22px;
+$font-size-xxl: 28px;
+$font-size-hero: 36px;
 
 // Spacing
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
-$spacing-xl: 32px;
-$spacing-xxl: 48px;
+$spacing-xl: 40px;
+$spacing-xxl: 72px;
+$spacing-section: 72px 24px;
 
 // Layout
-$max-width-mobile: 430px;
+$max-width-mobile: 480px;
 $min-touch-target: 44px;
+
+// Border radius
+$radius-sm: 8px;
+$radius-md: 12px;
+
+// Transitions
+$transition-base: 0.3s ease;
+$transition-slow: 0.7s ease;
