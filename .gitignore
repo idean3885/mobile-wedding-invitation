@@ -7,3 +7,6 @@ build/
 !.env.example
 # Original source photos (root level only)
 /IMG_*.JPG
+
+# IDE
+.idea/
