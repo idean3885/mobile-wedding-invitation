@@ -110,7 +110,7 @@
 - 실제 계좌 정보 추가:
   - 신랑측(동영): 국민은행 (본인), 국민은행 (아버지), 신한은행 (어머니)
   - 신부측(지혜): 하나은행 (본인), 농협은행 (아버지), 하나은행 (어머니)
-- 배포 플랫폼을 AppPaaS(adapter-node)에서 GitHub Pages(adapter-static)로 변경
+- 배포 플랫폼을 사내 PaaS(adapter-node)에서 GitHub Pages(adapter-static)로 변경
 - 카카오 지도 SDK 도메인 등록 이슈로 GitHub Pages로 이전 (idean3885.github.io 도메인 등록 가능)
 - 네이버 지도 iframe 시도했으나 전체 웹사이트가 로드되어 부적합, 카카오 지도 SDK로 복귀
 - VITE_KAKAO_MAP_KEY를 GitHub Secrets에서 빌드 타임 주입
