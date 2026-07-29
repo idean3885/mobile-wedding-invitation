@@ -67,7 +67,7 @@ npm run preview
 
 ## 배포
 
-`build/` 디렉토리를 AppPaaS에 업로드한다.
+`build/` 디렉토리를 사내 PaaS에 업로드한다.
 
 ## 검증 체크리스트
 

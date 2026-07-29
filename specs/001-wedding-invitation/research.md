@@ -74,8 +74,8 @@
 - `adapter-static`은 빌드 시 모든 라우트를 HTML로 생성
 - 단일 라우트(`/`)만 있으므로 설정 최소화
 - `prerender: { entries: ['/'] }` 설정으로 충분
-- 출력물(`build/`)을 AppPaaS에 그대로 배포
+- 출력물(`build/`)을 사내 PaaS에 그대로 배포
 
 **Alternatives considered**:
 - adapter-node: 서버 런타임 필요, Static Delivery 위반 → 기각
-- adapter-auto: 배포 플랫폼 자동 감지, AppPaaS 미지원 가능성 → 기각
+- adapter-auto: 배포 플랫폼 자동 감지, 사내 PaaS 미지원 가능성 → 기각

@@ -141,7 +141,7 @@
 - [x] T029 ~~가로 모드 / 데스크톱 대응~~: 스펙에서 제외 — 모바일 세로(portrait)만 지원
 - [x] T030 [P] 클립보드 미지원 브라우저 대응: Clipboard API + execCommand + 텍스트 선택 3단계 폴백 구현 완료
 - [x] T031 성능 검증: 정적 사이트 + webp 경량화로 충분한 성능 확보
-- [x] T032 GitHub Pages 배포 검증: GitHub Actions 워크플로우 확인, 커스텀 도메인 `j4df09bd732eb302e05d225dd6ae40649.apppaas.app` 접근 확인
+- [x] T032 GitHub Pages 배포 검증: GitHub Actions 워크플로우 확인, 커스텀 도메인 `xxxxxxxx.platform.example` 접근 확인
 
 ---
 

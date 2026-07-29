@@ -54,12 +54,12 @@ YAGNI 원칙을 엄격히 적용한다.
 | Language | TypeScript | 타입 안전성 |
 | Styling | SCSS (컴포넌트 스코프) | 디자이너 협업 용이 |
 | Build | Vite (SvelteKit 내장) | SCSS/이미지 최적화 내장 |
-| Deploy | AppPaaS (정적 빌드 결과물) | 웹 애플리케이션 배포 |
+| Deploy | 사내 PaaS (정적 빌드 결과물) | 웹 애플리케이션 배포 |
 | OG Tags | app.html (정적 삽입) | 크롤러 JS 미실행 대응, 링크 공유 시 썸네일 표시 |
 
 ## Development Workflow
 
-1. **개발자 초안 단계**: 와이어프레임 + SvelteKit 프로젝트 초기화 + 섹션별 컴포넌트 구조 + CI/CD(AppPaaS) 구축
+1. **개발자 초안 단계**: 와이어프레임 + SvelteKit 프로젝트 초기화 + 섹션별 컴포넌트 구조 + CI/CD(사내 PaaS) 구축
 2. **디자이너 협업 단계**: 디자이너가 제공하는 SCSS/HTML/Svelte 컴포넌트를 섹션 단위로 교체 적용
 3. **콘텐츠 반영**: 실제 사진, 텍스트, 지도 정보 등 콘텐츠 삽입
 4. **최종 검수**: 모바일 기기 실물 테스트 + OG 태그 확인 + 성능 측정
